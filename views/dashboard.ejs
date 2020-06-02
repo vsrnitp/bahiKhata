@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <title></title>
+  <style>
+    body
+{
+    counter-reset: Count-Value;     
+}
+table
+{
+    border-collapse: separate;
+}
+tr td:first-child:before
+{
+  counter-increment: Count-Value;   
+  content:  counter(Count-Value);
+}
+  </style>
+</head>
+<body style="background-color:ghostwhite;" class="container-fluid">
+    <div class="row" style="padding-top: 1%; font-weight: bolder;">
+        <div class="col-sm-3 col-xs-3">
+<h6 style="font-family: cursive;">Welcome <span style="color: red;"><%= user%></span></h6>
+<h6 style="font-family: cursive;">Today is :- <span style="color: red;"><%= date%>-<%=month%>-<%=year%></span></h6>
+    </div>
+    <div class="col-sm-3 col-xs-3">
+        
+            <button class="btn btn-outline-info" data-toggle="modal" data-target="#myModal1" style="font-weight: bolder;">Add a Client</button>
+        
+
+            
+    <!-- Model for addding clients to the database...-->
+<!-- The Modal -->
+<div class="modal" id="myModal1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: center;">Add clients to Database</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="text-align: center;">
+        <form action="/createClient" method="POST">
+          <div class="form-group">
+            <label for="name">Name :</label>
+            <input type="text" required name="clientName" class="form-control" id="clientName">
+          </div>
+          <div class="form-group">
+            <label for="id">Client ID:</label>
+            <input type="text" required name="clientId" class="form-control" id="idClient">
+          </div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" required name="clientAddress" class="form-control" id="clientAdd">
+          </div>
+          <div class="form-group">
+            <label for="mobNo">Mobile No.:</label>
+            <input type="number" required name="clientMobileNo" class="form-control" id="clientMobNo">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="clientEmail" class="form-control" id="clientEmail">
+          </div>
+          <div class="form-group">
+            <label for="remainingBalance">Remainig Balance:</label>
+            <input type="number" required name="clientRemainingBalance" class="form-control" id="clientRemBal">
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+    </div>
+    <div class="col-sm-2 col-xs-2">
+        <form action="/sale" method="GET">
+            <button class="btn btn-outline-danger" style="font-weight: bolder;">Sell</button>
+        </form>
+    </div>
+    <div class="col-sm-2 col-xs-2">        
+            <button class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal" style="font-weight: bolder;">Add to Stock</button>
+    </div>
+
+    <!-- Model for addding to the stocks...-->
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: center;">Add items to Database</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="text-align: center;">
+        <form action="/setStocks" method="POST">
+          <div class="form-group">
+            <label for="name">Name of Item:</label>
+            <input type="text" required name="itemName" class="form-control" id="itemName">
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" required name="quantity" class="form-control" id="quantity">
+          </div>
+          <div class="form-group">
+            <label for="price">Price(excluding G.S.T.):</label>
+            <input type="number" required name="price" class="form-control" id="price">
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="col-sm-2 col-xs-2">
+        
+            <button class="btn btn-outline-info" data-toggle="modal" data-target="#myModal2" style="font-weight: bolder;margin-bottom: 5px;;">Bill Clearance</button>
+            <form action="/clientList" method="GET">
+            <button class="btn btn-outline-primary" style="font-weight: bolder;">Client List</button>
+              </form>
+       <!--Model for bill clearance goes here...-->
+
+<!-- The Modal -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: center;">Bill Clearance</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="text-align: center;">
+        <form action="/clearBill" method="POST">
+          <div class="form-group">
+            <label for="customerid">Customer ID:</label>
+            <input type="text" required name="clientId" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="payment">Balance Paid:</label>
+            <input type="number" required name="balancePaid" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+</div>
+    </div>
+</div>
+     
+    </div>
+    
+    
+<div class="row" style="padding-top: 1%;padding-bottom: 3%;">
+  <div class="col-sm-12" style="text-align: center;"> 
+     <h2>Stock Details</h2>
+
+     <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Serial No.</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>C.G.S.T.(9%)</th>
+            <th>S.G.S.T.(9%)</th>
+            <th>Net Price</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+   
+        <% dataLoad.forEach(function( eachData){ %>
+          <tr>
+            <td>
+              
+            </td>
+            <td><%= eachData.productName%></td>
+            <td><%= eachData.quantity%></td>
+            <td><%= eachData.price%></td>
+            <td><%= eachData.cgst%></td>
+            <td><%= eachData.sgst%></td>
+            <td><%= eachData.netPrice%></td>
+            <td>
+             <form action="/updateStock/<%= eachData._id%>" method="GET">
+              <button class="btn btn-outline-success" style="font-weight: bolder;">UPDATE</button>
+             </form>
+
+
+
+
+              
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+  </div>
+</div>
+    </div>
+
+    <div>
+         <button class="btn btn-outline-success" data-toggle="modal" data-target="#myModal4">BILL GENERATE</button>
+
+
+         
+<!-- The Modal -->
+<div class="modal" id="myModal4">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: center;">GENERATE BILL</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        
+
+
+        <form action="/billGenerate" method="POST">
+          <div class="form-group">
+            <label for="clientId">Client Id:</label>
+            <input type="text" class="form-control" placeholder="Enter client Id" name="clientId">
+          </div>
+          <div class="form-group">
+            <label for="date">Date of Transaction:</label>
+            <input type="date" class="form-control" placeholder="MM-DD-YYYY" name="date">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+
+<div style="padding: 1%;">
+<form action="/logout" method="POST"><button class="btn btn-outline-danger" style="font-weight:bolder;">
+    Logout
+</button></form>
+</div>
+</body>
+</html>  

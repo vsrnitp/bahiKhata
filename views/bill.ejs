@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <title></title>
+    <style>
+
+        body
+        {
+            counter-reset: Count-Value;     
+        }
+        table
+        {
+            border-collapse: separate;
+        }
+        tr td:first-child:before
+        {
+          counter-increment: Count-Value;   
+          content:  counter(Count-Value);
+        }
+        
+            </style>
+</head>
+<body>
+<h1 style="text-align: center; font-weight: bolder;">NAME OF THE FIRM</h1>
+<h6 style="text-align: center; font-weight: bolder;">Cash Receipt</h6>
+
+<div class="row"> 
+ <div class="col-sm-3"> 
+<div>Paid amount goes here :-<%= paidAmount%></div>
+<div>Current Unsettled Amount goes here :- <%= currUnsettled%></div>
+ </div>
+ <div class="col-sm-6">
+<h4>Bill details here.....</h4>
+<div>Customer Name:- <%= clientLog.name%></div>
+<div>Customer Id:- <%= clientLog.clientId%></div>
+<div>Mobile No.:- <%= clientLog.mobNo%></div>
+
+
+<div>
+
+    <!--creating bill table...-->
+    <table class="table table-hover">
+        <thead>
+          <tr>
+              <th>Sereial No.</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Net Price</th>
+            <th>Net cgst</th>
+            <th>Net sgst</th>
+            <th>Net Payable Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+   
+            <% billData.forEach(function( eachData){ %>
+          <tr>
+            <td></td>
+            <td><%= eachData.productName%></td>
+            <td><%= eachData.quantity%></td>
+            <td><%= eachData.netPrice%></td>
+            <td><%= eachData.netCgst%></td>
+            <td><%= eachData.netSgst%></td>
+            <td><%= eachData.netPayableAmount%></td>
+            
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+<h2 style="font-weight: bolder;">Total Billing Amount - <%= totalBill%></h2>
+<h6 style="font-weight: bolder;">(IN WORDS : - <%= wordFig%>)</h6>
+</div>
+
+
+ </div>
+
+<div class="col-sm-3">
+     
+</div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<style>
+    @media only screen and (max-width:500px){
+        #hide1{
+            display: none;
+        }
+        #hide2{
+            display: none;
+        }
+    }
+    
+</style>
+
+    <title></title>
+    
+</head>
+<body class="container-fluid" style="background-color:honeydew;">
+<h1 style="color: red;text-align: center; ">WELCOME TO THE SALES SOFTWARE</h1>
+<h3 style="color:greenyellow;text-align: center; ">To continue to the console pleae LOGIN or REGISTER</h3>
+
+<div class="row">
+   <div class="col-sm-4" id="hide1" style="padding-top: 7%;">
+    <h3>An image of lakshmi ganesha</h3>
+   </div>
+
+   <div class="col-sm-4" style="padding: 3%;" align:"center">
+    <form action="./register" method="POST">
+        <div class="form-group">
+          <label for="email" style="font-weight:bolder;">Email address:</label>
+          <input type="email" required name="email" class="form-control" placeholder="Enter email" id="email">
+        </div>
+        <div class="form-group">
+          <label for="pwd" style="font-weight: bolder;">Password:</label>
+          <input type="password" required name="password" class="form-control" placeholder="Enter password" id="pwd">
+        </div>
+        <div class="form-group">
+            <label for="pwd" style="font-weight: bolder;">Re-Enter Password:</label>
+            <input type="password" required name="repPassword" class="form-control" placeholder="Re-Enter Password" id="pwd">
+          </div>
+        <button type="submit" class="btn btn-outline-success" style="font-weight: bolder;">Register</button>
+      </form>  
+      <div style="text-align: center;">New User
+    <div><form action="/" method="GET"><button class="btn btn-outline-danger" style="font-weight: bolder;">LogIn</button></form></div>
+    </div>  
+   </div>
+
+   <div class="col-sm-4" id="hide2" style="padding-top: 7%;">
+       <h3>An image of lakshmi ganesha</h3>
+   </div>
+</div>
+
+</body>
+</html>
