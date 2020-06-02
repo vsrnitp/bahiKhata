@@ -33,7 +33,7 @@ app.use(cookieParser());
 
 
 // connecting to the database (mongoDB)...
-const databaseURL = 'mongodb+srv://vsrnitp:King123@cluster0-fy7sb.mongodb.net/test?retryWrites=true&w=majority'
+const databaseURL = 'mongodb+srv://*******:*******@cluster0-fy7sb.mongodb.net/test?retryWrites=true&w=majority'
 mongoose.connect(databaseURL,{useNewUrlParser : true})
 .then(()=>{
     console.log('Database connected succesfully...')
